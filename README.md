@@ -1,7 +1,19 @@
-# GravityFallsCryptoTools
-Python data tool for Gravity Falls Cryptograms
+# GravityFallsCryptoTools - Python data tool for Gravity Falls Cryptograms
+## [test_cryptociphers.py](test_cryptociphers.py)
+Tests the ciphers and their encrypt / decrypt capabilities
 
-## cryptociphers.py
+## [gravity_falls_cryptograms_decryptor_(spoilers).py](gravity_falls_cryptograms_decryptor_(spoilers).py)
+Cryptograms not included: Bill's Symbols, Author's Symbols, Combined Symbol Ciphers
+
+Spoiler alert! If you have not solved the Gravity Falls cryptograms, and don't want any cryptospoilers, don't read this.
+
+Spoiler alert! This file contains most of the Gravity Falls cryptograms, with their cipher and cipher information, executing the file reveals their secrets.
+
+Cryptograms came from: https://gravityfalls.fandom.com/wiki/List_of_cryptograms#Number_codes
+
+## [cryptociphers.py](cryptociphers.py)
+
+```
 Available tools:
 	Alphabet:
 		shift_alphabet   - Tool which slides alphabets by an offset, useful for caesar ciphers
@@ -24,16 +36,13 @@ Available tools:
 
 	binary:
 		bin_string       - Turn binary strings into text
-		string_bin	 - Turn text strings into binary strings 
+		string_bin	 - Turn text strings into binary strings
+```
 
-## test_cryptociphers.py
-Tests the ciphers and their encrypt / decrypt capabilities
+# Example
+![Puzzle in show](Welcome-Show-Clip.png "Puzzle in show")
+![Puzzle solved with code](Welcome.png "Puzzle solved with code")
 
-## gravity_falls_cryptograms.py
-Cryptograms not included: Bill's Symbols, Author's Symbols, Combined Symbol Ciphers
 
-Spoiler alert! If you have not solved the Gravity Falls cryptograms, and don't want any cryptospoilers, don't read this.
 
-Spoiler alert! This file contains most of the Gravity Falls cryptograms, with their cipher and cipher information, executing the file reveals their secrets.
 
-Cryptograms came from: https://gravityfalls.fandom.com/wiki/List_of_cryptograms#Number_codes
