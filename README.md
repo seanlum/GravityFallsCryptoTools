@@ -1,4 +1,6 @@
-# GravityFallsCryptoTools - Python data tool for Gravity Falls Cryptograms
+# GravityFallsCryptoTools
+Python data tool for Gravity Falls Cryptograms
+
 ## [test_cryptociphers.py](test_cryptociphers.py)
 Tests the ciphers and their encrypt / decrypt capabilities
 
