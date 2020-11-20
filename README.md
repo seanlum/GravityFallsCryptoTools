@@ -17,6 +17,9 @@ Cryptograms came from: https://gravityfalls.fandom.com/wiki/List_of_cryptograms#
 
 ```
 Available tools:
+	Combined:
+		decrypt_combined - is a combination: decrypt_caesar + decrypt_atbash + decrypt_a1z26
+
 	Alphabet:
 		shift_alphabet   - Tool which slides alphabets by an offset, useful for caesar ciphers
 	
@@ -43,8 +46,8 @@ Available tools:
 
 # Example
 ![Puzzle in show](Welcome-Show-Clip.png "Puzzle in show")
+![Welcome.py](Welcome-Preview.png "Welcome.py in action")
 ![Puzzle solved with code](Welcome.png "Puzzle solved with code")
-
 
 
 
