@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 # made to solve these cryptograms
+# Gravity Falls Cryptograms Decryptor (spoilers)
 # https://gravityfalls.fandom.com/wiki/List_of_cryptograms#Number_codes
-from cryptociphers import decrypt_atbash, decrypt_caesar, decrypt_vigenere, decrypt_a1z26, bin_string
+import cryptociphers
 
-
-def combined(shift, cryptogram):
-    return decrypt_caesar(shift, decrypt_atbash(decrypt_a1z26(cryptogram)))
-
-cryptograms = [
+puzzles = [
     {
         'entry': 'Theme Song',
         'cryptogram':  'VWDQ LV QRW ZKDW KH VHHPV',
@@ -782,17 +779,61 @@ cryptograms = [
     }
 ]
 
-for entry in cryptograms:
-    if len(entry['cryptogram']) > 0:
-        if entry['type'] == 'caesar':
-            print(entry['entry'] + ':\n\t' + decrypt_caesar(entry['shift'], entry['cryptogram']).upper() + '\n')
-        elif entry['type'] == 'atbash':
-            print(entry['entry'] + ':\n\t' + decrypt_atbash(entry['cryptogram']).upper() + '\n')
-        elif entry['type'] == 'a1z26':
-            print(entry['entry'] + ':\n\t' + decrypt_a1z26(entry['cryptogram']).upper() + '\n')
-        elif entry['type'] == 'combined':
-            print(entry['entry'] + ':\n\t' + combined(entry['shift'], entry['cryptogram']).upper() + '\n')
-        elif entry['type'] == 'binstring':
-            print(entry['entry'] + ':\n\t' + bin_string(entry['cryptogram']).upper() + '\n')
-        elif entry['type'] == 'vigenere':
-            print(entry['entry'] + ':\n\t' + decrypt_vigenere(entry['key'], entry['cryptogram']).upper() + '\n')
+# Spoiler_level 
+#   1 = only the entry
+#   2 = entry + cryptogram
+#   3 = entry + cryptogram + cipher type
+#   4 = entry + cryptogram + cipher + [ shift | key ]
+def get_puzzle_by_name(name, spoiler_level: 3):
+    puzzle = [puzzle for puzzle in puzzles if puzzle['entry'] == name][0]
+
+    puzzle_by_spoiler = {
+        'entry' : puzzle['entry']
+    }
+
+    if spoiler_level > 3:
+        if puzzle['type'] == 'vigenere':
+            puzzle_by_spoiler['key'] = puzzle['key']
+        else:
+            puzzle_by_spoiler['shift'] = puzzle['shift']
+
+    if spoiler_level > 2:
+        puzzle_by_spoiler['type'] = puzzle['type']
+    
+    if spoiler_level > 1:
+        puzzle_by_spoiler['cryptogram'] = puzzle['cryptogram']
+
+    return dict(puzzle_by_spoiler)
+
+
+
+# This solves all of the cryptograms, not enabled by default
+def spoiler_solve_all():
+    for entry in puzzles:
+        if len(entry['cryptogram']) > 0:
+            if entry['type'] == 'caesar':
+                print(entry['entry'] + ':\n\t' + 
+                    cryptociphers.decrypt_caesar(entry['shift'], entry['cryptogram']).upper() + '\n')
+            elif entry['type'] == 'atbash':
+                print(entry['entry'] + ':\n\t' + 
+                    cryptociphers.decrypt_atbash(entry['cryptogram']).upper() + '\n')
+            elif entry['type'] == 'a1z26':
+                print(entry['entry'] + ':\n\t' + 
+                    cryptociphers.decrypt_a1z26(entry['cryptogram']).upper() + '\n')
+            elif entry['type'] == 'combined':
+                print(entry['entry'] + ':\n\t' + 
+                    cryptociphers.decrypt_combined(entry['shift'], entry['cryptogram']).upper() + '\n')
+            elif entry['type'] == 'binstring':
+                print(entry['entry'] + ':\n\t' + 
+                    cryptociphers.bin_string(entry['cryptogram']).upper() + '\n')
+            elif entry['type'] == 'vigenere':
+                print(entry['entry'] + ':\n\t' + 
+                    cryptociphers.decrypt_vigenere(entry['key'], entry['cryptogram']).upper() + '\n')
+
+# I use this for validation purposes sometimes
+# spoiler_solve_all()
+
+def just_give_me_the_books():
+    return [dict(i) for i in puzzles]
+
+__all__ = ['get_puzzle_by_name', 'just_give_me_the_books']

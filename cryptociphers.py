@@ -150,7 +150,7 @@ def encrypt_vigenere(cipher_word, message):
     cryptogram_message = list(filter(lambda l: l['type'] == 'letter', parts))
 
     vigenere_key = ''
-    cipher_word = ''.join(list(filter(lambda i: i is not ' ', [i for i in cipher_word])))
+    cipher_word = ''.join(list(filter(lambda i: i != ' ', [i for i in cipher_word])))
     if len(cipher_word) < len(cryptogram_message):
         while len(vigenere_key) < len(cryptogram_message):
             if (len(vigenere_key) + len(cipher_word)) <= len(cryptogram_message):
@@ -211,7 +211,7 @@ def decrypt_vigenere(cipher_word, cryptogram):
     cryptogram_message = list(filter(lambda l: l['type'] == 'letter', parts))
 
     vigenere_key = ''
-    cipher_word = ''.join(list(filter(lambda i: i is not ' ', [i for i in cipher_word])))
+    cipher_word = ''.join(list(filter(lambda i: i != ' ', [i for i in cipher_word])))
     if len(cipher_word) < len(cryptogram_message):
         while len(vigenere_key) < len(cryptogram_message):
             if (len(vigenere_key) + len(cipher_word)) <= len(cryptogram_message):
@@ -266,7 +266,7 @@ def decrypt_a1z26(content, reversed=False):
                 tmp_word.append(num)
                 num = ''
                 tmp_word.append(l)
-        if num is not '':
+        if num != '':
             tmp_word.append(num)
 
         tmp_word = list(filter(lambda w: len(w) > 0, tmp_word))
@@ -317,9 +317,13 @@ def string_bin(bstring):
         nums.append(i2bin(ord(l), 8))
     return ''.join(nums)
 
+def decrypt_combined(shift, cryptogram):
+    return decrypt_caesar(shift,
+             decrypt_atbash(
+               decrypt_a1z26(cryptogram)))
 
 __name__ = 'cryptociphers'
-__all__ = ['shift_alphabet',
+__all__ = ['shift_alphabet', 'decrypt_combined'
            'encrypt_atbash', 'decrypt_atbash',
            'decrypt_caesar', 'encrypt_caesar',
            'encrypt_vigenere', 'decrypt_vigenere',
