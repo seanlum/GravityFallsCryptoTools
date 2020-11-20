@@ -1,15 +1,18 @@
 # GravityFallsCryptoTools
 Python data tool for Gravity Falls Cryptograms
 
-## [test_cryptociphers.py](test_cryptociphers.py)
+## [Welcome.py | PoC and Scratchboard](Welcome.py)
 Tests the ciphers and their encrypt / decrypt capabilities
 
-## [gravity_falls_cryptograms_decryptor_(spoilers).py](gravity_falls_cryptograms_decryptor_(spoilers).py)
-Cryptograms not included: Bill's Symbols, Author's Symbols, Combined Symbol Ciphers
+## [cryptograms.py](cryptograms.py)
+The dwelling place of all the Gravity Falls cryptograms which could be typed up in UTF-8.
 
-Spoiler alert! If you have not solved the Gravity Falls cryptograms, and don't want any cryptospoilers, don't read this.
+Cryptograms not included: Bill's Symbols, Author's Symbols, Combined Symbol Ciphers (maybe a todo?)
 
-Spoiler alert! This file contains most of the Gravity Falls cryptograms, with their cipher and cipher information, executing the file reveals their secrets.
+**puzzle solver alert**
+There are shift values, cipher keys, and various forms of solving data in cryptograms.py
+If you just want to use the spoiler levels, you can also retreive the cryptogram names, 
+from the gravityfalls.fandom.com/wiki link below:
 
 Cryptograms came from: https://gravityfalls.fandom.com/wiki/List_of_cryptograms#Number_codes
 
